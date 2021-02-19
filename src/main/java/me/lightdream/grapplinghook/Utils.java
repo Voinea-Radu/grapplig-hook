@@ -28,7 +28,7 @@ public class Utils {
 
     public static void saveFile(FileConfiguration config, String path){
 
-        File file = new File(Bukkit.getServer().getPluginManager().getPlugin("SkyBank").getDataFolder(), path);
+        File file = new File(Bukkit.getServer().getPluginManager().getPlugin("Grapplinghook").getDataFolder(), path);
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -42,7 +42,7 @@ public class Utils {
 
     public static FileConfiguration loadFile(String path) {
 
-        File file = new File(Bukkit.getServer().getPluginManager().getPlugin("SkyBank").getDataFolder(), path);
+        File file = new File(Bukkit.getServer().getPluginManager().getPlugin("Grapplinghook").getDataFolder(), path);
         if (file.exists()) {
             return YamlConfiguration.loadConfiguration(file);
         } else {

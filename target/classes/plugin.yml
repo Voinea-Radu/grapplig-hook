@@ -1,0 +1,7 @@
+name: Grapplinghook
+version: 1.0
+main: me.lightdream.grapplinghook.Grapplinghook
+commands:
+  grapp:
+    description: grapp
+    usage: /<command>

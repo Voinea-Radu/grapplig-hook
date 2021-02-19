@@ -31,10 +31,6 @@ public class GrappCommand implements CommandExecutor {
                 Location l1 = player.getLocation();
                 Location l2 = player.getLocation();
 
-               //System.out.println(player.getLocation().getDirection().getX());
-               //System.out.println(getDifX(0.4f, player.getLocation().getDirection().getX()));
-               //l1.setZ(l1.getZ() + getDifZ(0.4f, player.getLocation().getDirection().getZ()));
-
                 l1.setX(l1.getX() + getDifX(0.1f, player.getLocation().getDirection().getX()));
                 l1.setZ(l1.getZ() + getDifZ(0.1f, player.getLocation().getDirection().getZ()));
 
@@ -44,16 +40,23 @@ public class GrappCommand implements CommandExecutor {
 
                 LivingEntity le1 = (LivingEntity) world.spawnEntity(l1, EntityType.BAT);
                 LivingEntity le2 = (LivingEntity) world.spawnEntity(l2, EntityType.BAT);
-                //le1.setAI(false);
-                //le2.setAI(false);
+
+                LivingEntity holder1 = (LivingEntity) world.spawnEntity(l1, EntityType.BAT);
+                LivingEntity holder2 = (LivingEntity) world.spawnEntity(l2, EntityType.BAT);
+                holder1.setAI(false);
+                holder2.setAI(false);
                 le1.setGliding(true);
                 le2.setGliding(true);
                 le1.setInvulnerable(true);
                 le2.setInvulnerable(true);
+                holder1.setInvulnerable(true);
+                holder2.setInvulnerable(true);
                 le1.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 100000, 1));
                 le2.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 100000, 1));
-                le1.setLeashHolder(player);
-                le2.setLeashHolder(player);
+                holder1.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 100000, 1));
+                holder2.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 100000, 1));
+                le1.setLeashHolder(holder1);
+                le2.setLeashHolder(holder2);
 
                 new BukkitRunnable(){
                     final double x = (block.getLocation().getX() - player.getLocation().getX() * 1.0f) / 20.0f;

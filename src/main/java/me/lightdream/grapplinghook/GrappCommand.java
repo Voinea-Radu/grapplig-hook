@@ -35,11 +35,11 @@ public class GrappCommand implements CommandExecutor {
                //System.out.println(getDifX(0.4f, player.getLocation().getDirection().getX()));
                //l1.setZ(l1.getZ() + getDifZ(0.4f, player.getLocation().getDirection().getZ()));
 
-                l1.setX(l1.getX() + getDifX(0.4f, player.getLocation().getDirection().getX()));
-                l1.setZ(l1.getZ() + getDifZ(0.4f, player.getLocation().getDirection().getZ()));
+                l1.setX(l1.getX() + getDifX(0.1f, player.getLocation().getDirection().getX()));
+                l1.setZ(l1.getZ() + getDifZ(0.1f, player.getLocation().getDirection().getZ()));
 
-                l2.setX(l2.getX() - getDifX(0.4f, player.getLocation().getDirection().getX()));
-                l2.setZ(l2.getZ() - getDifZ(0.4f, player.getLocation().getDirection().getZ()));
+                l2.setX(l2.getX() - getDifX(0.1f, player.getLocation().getDirection().getX()));
+                l2.setZ(l2.getZ() - getDifZ(0.1f, player.getLocation().getDirection().getZ()));
 
 
                 LivingEntity le1 = (LivingEntity) world.spawnEntity(l1, EntityType.BAT);

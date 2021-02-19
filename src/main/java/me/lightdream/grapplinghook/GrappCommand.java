@@ -31,11 +31,11 @@ public class GrappCommand implements CommandExecutor {
                 Location l1 = player.getLocation();
                 Location l2 = player.getLocation();
 
-                l1.setX(l1.getX() + getDifX(0.1f, player.getLocation().getDirection().getX()));
-                l1.setZ(l1.getZ() + getDifZ(0.1f, player.getLocation().getDirection().getZ()));
+                l1.setX(l1.getX() + getDifX(Grapplinghook.config.getDouble("angle"), player.getLocation().getDirection().getX()));
+                l1.setZ(l1.getZ() + getDifZ(Grapplinghook.config.getDouble("angle"), player.getLocation().getDirection().getZ()));
 
-                l2.setX(l2.getX() - getDifX(0.1f, player.getLocation().getDirection().getX()));
-                l2.setZ(l2.getZ() - getDifZ(0.1f, player.getLocation().getDirection().getZ()));
+                l2.setX(l2.getX() - getDifX(Grapplinghook.config.getDouble("angle"), player.getLocation().getDirection().getX()));
+                l2.setZ(l2.getZ() - getDifZ(Grapplinghook.config.getDouble("angle"), player.getLocation().getDirection().getZ()));
 
 
                 LivingEntity le1 = (LivingEntity) world.spawnEntity(l1, EntityType.BAT);
@@ -59,9 +59,9 @@ public class GrappCommand implements CommandExecutor {
                 le2.setLeashHolder(holder2);
 
                 new BukkitRunnable(){
-                    final double x = (block.getLocation().getX() - player.getLocation().getX() * 1.0f) / 20.0f;
-                    final double y = Math.max((block.getLocation().getY() - player.getLocation().getY() * 1.0f) / 20.0f, 0);
-                    final double z = (block.getLocation().getZ() - player.getLocation().getZ() * 1.0f) / 20.0f;
+                    final double x = (block.getLocation().getX() - player.getLocation().getX() * 1.0f) / Grapplinghook.config.getDouble("steps") * 1.0f;
+                    final double y = Math.max((block.getLocation().getY() - player.getLocation().getY() * 1.0f) / Grapplinghook.config.getDouble("steps") * 1.0f, 0);
+                    final double z = (block.getLocation().getZ() - player.getLocation().getZ() * 1.0f) / Grapplinghook.config.getDouble("steps") * 1.0f;
 
                     int it = 0;
 
@@ -74,7 +74,7 @@ public class GrappCommand implements CommandExecutor {
                         le1.teleport(new Location(world, le1.getLocation().getX() + x, le1.getLocation().getY() + y, le1.getLocation().getZ() + z));
                         le2.teleport(new Location(world, le2.getLocation().getX() + x, le2.getLocation().getY() + y, le2.getLocation().getZ() + z));
 
-                        if(it>=25){
+                        if(it>= Grapplinghook.config.getDouble("steps") + 1){
                             //System.out.println(new Vector(block.getLocation().getX() - player.getLocation().getX() * 1.0f, Math.sqrt(block.getLocation().getY() - player.getLocation().getY() * 1.0f) / 2,block.getLocation().getZ() - player.getLocation().getZ() * 1.0f));
                             player.setVelocity(new Vector(block.getLocation().getX() - player.getLocation().getX() * 1.0f, Math.sqrt(block.getLocation().getY() - player.getLocation().getY() * 1.0f) / 2,block.getLocation().getZ() - player.getLocation().getZ() * 1.0f));
                             le1.setHealth(0);

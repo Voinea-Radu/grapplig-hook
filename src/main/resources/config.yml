@@ -1,0 +1,4 @@
+#smaller is faster and bigger is slower
+steps: 20
+#angle
+angle: 0.1

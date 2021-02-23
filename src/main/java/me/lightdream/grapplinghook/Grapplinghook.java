@@ -13,7 +13,7 @@ public final class Grapplinghook extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
         this.getCommand("grapp").setExecutor(new GrappCommand());
-        config = Utils.loadFile("config");
+        config = Utils.loadFile("config.yml");
 
     }
 

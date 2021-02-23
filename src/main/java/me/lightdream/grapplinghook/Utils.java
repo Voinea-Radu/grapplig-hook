@@ -26,20 +26,6 @@ public class Utils {
         }
     }
 
-    public static void saveFile(FileConfiguration config, String path){
-
-        File file = new File(Bukkit.getServer().getPluginManager().getPlugin("Grapplinghook").getDataFolder(), path);
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-                config.save(file);
-            } catch (IOException e) {
-                e.printStackTrace();
-
-            }
-        }
-    }
-
     public static FileConfiguration loadFile(String path) {
 
         File file = new File(Bukkit.getServer().getPluginManager().getPlugin("Grapplinghook").getDataFolder(), path);

@@ -27,6 +27,10 @@ public class GrappCommand implements CommandExecutor {
                 Player player = (Player) sender;
 
                 Block block = player.getTargetBlock(null, 100);
+
+                if(block == null)
+                    return true;
+
                 World world = player.getWorld();
                 Location l1 = player.getLocation();
                 Location l2 = player.getLocation();

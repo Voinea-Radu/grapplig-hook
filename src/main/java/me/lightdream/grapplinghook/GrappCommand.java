@@ -31,6 +31,11 @@ public class GrappCommand implements CommandExecutor {
                 if(block == null)
                     return true;
 
+                if(block.getLocation().getY() < player.getLocation().getY())
+                    return true;
+
+                System.out.println(block.getLocation());
+
                 World world = player.getWorld();
                 Location l1 = player.getLocation();
                 Location l2 = player.getLocation();
@@ -45,8 +50,8 @@ public class GrappCommand implements CommandExecutor {
                 LivingEntity le1 = (LivingEntity) world.spawnEntity(l1, EntityType.BAT);
                 LivingEntity le2 = (LivingEntity) world.spawnEntity(l2, EntityType.BAT);
 
-                LivingEntity holder1 = (LivingEntity) world.spawnEntity(l1, EntityType.BAT);
-                LivingEntity holder2 = (LivingEntity) world.spawnEntity(l2, EntityType.BAT);
+                LivingEntity holder1 = (LivingEntity) world.spawnEntity(player.getLocation(), EntityType.BAT);
+                LivingEntity holder2 = (LivingEntity) world.spawnEntity(player.getLocation(), EntityType.BAT);
                 holder1.setAI(false);
                 holder2.setAI(false);
                 le1.setGliding(true);
@@ -79,7 +84,6 @@ public class GrappCommand implements CommandExecutor {
                         le2.teleport(new Location(world, le2.getLocation().getX() + x, le2.getLocation().getY() + y, le2.getLocation().getZ() + z));
 
                         if(it>= Grapplinghook.config.getDouble("steps") + 1){
-                            //System.out.println(new Vector(block.getLocation().getX() - player.getLocation().getX() * 1.0f, Math.sqrt(block.getLocation().getY() - player.getLocation().getY() * 1.0f) / 2,block.getLocation().getZ() - player.getLocation().getZ() * 1.0f));
                             player.setVelocity(new Vector(block.getLocation().getX() - player.getLocation().getX() * 1.0f, Math.sqrt(block.getLocation().getY() - player.getLocation().getY() * 1.0f) / 2,block.getLocation().getZ() - player.getLocation().getZ() * 1.0f));
                             le1.setHealth(0);
                             le2.setHealth(0);

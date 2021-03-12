@@ -84,8 +84,6 @@ public class GrappCommand implements CommandExecutor {
                     @Override
                     public void run() {
 
-                        System.out.println(y);
-
                         it++;
                         le1.teleport(new Location(world, le1.getLocation().getX() + x, le1.getLocation().getY() + y, le1.getLocation().getZ() + z));
                         le2.teleport(new Location(world, le2.getLocation().getX() + x, le2.getLocation().getY() + y, le2.getLocation().getZ() + z));

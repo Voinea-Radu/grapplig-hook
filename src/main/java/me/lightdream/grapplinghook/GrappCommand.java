@@ -1,7 +1,9 @@
 package me.lightdream.grapplinghook;
 
+import com.sun.tools.doclint.HtmlTag;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
@@ -26,10 +28,15 @@ public class GrappCommand implements CommandExecutor {
             if(sender instanceof Player){
                 Player player = (Player) sender;
 
-                Block block = player.getTargetBlock(null, 100);
+                Block block = player.getTargetBlock(null, 50);
 
                 if(block == null)
                     return true;
+                
+                if(block.getType() == Material.AIR)
+                    return true;
+
+                //System.out.println(block);
 
                 if(block.getLocation().getY() < player.getLocation().getY())
                     return true;
